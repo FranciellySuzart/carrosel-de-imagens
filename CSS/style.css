@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+h1, p{
+    text-align: center;
+    margin-top: 50px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+body{
+    background: linear-gradient(lab(26.64% 48.07 -40.54 / 0.712) 0%, oklab(14.709% 0.04357 -0.01954 / 0.581)lch(19.43% 42.11 335.63 / 0.581));
+}
+
+.interface{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* estilo do slider */
+
+.slider{
+    height: 100vh;
+    position: relative; 
+}
+
+.slider .slider-conteiner .slider-box{
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    opacity: 0;
+    visibility: contained;
+    pointer-events: none;
+}
+
+.slider .slider-box img{
+    width: 280px;
+    height: 410px;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 20px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.4);;
+}
+
+.slider .slider-box::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, #000, transparent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+.info{
+    position: absolute;
+    left: 10px;
+    bottom: 35%;
+    text-align: center;
+    color: #fff;
+    z-index: 100%;
+    width:80%  ;
+    max-width: 600px;
+}
+
+.info h2{
+    font-size: 5rem;
+    left: 80px;
+    position: relative;
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: "monoton";
+}
+
+.slider-box .info p, .info h2{
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s ease;
+    color: black;
+}
+
+.slider-box.ativo .info p, .info h2{
+    opacity: 1;
+    pointer-events: auto;
+
+}
+/* estilos setas */
+
+.setas{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.setas button{
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ff71ce;
+    background: rgba(20, 0, 35, 0.7);
+    border-radius: 50%;
+    cursor:pointer;
+    font-size: 20px;
+    transition: .2s ease;
+    box-shadow: 0 0 10px #ff71ce, 0 0 20px rgba(255, 113, 206, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+}
+
+.setas button:hover{
+    background-color: #fff;
+}
+
+.btn-nav-box{
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    z-index: 777777;
+    left: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-nav-box .btn-nav{
+    width: 30px;
+    height: 10px;
+    border: 1px solid #fff;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s ease;
+    left: 20px;
+}
+
+.btn-nav-box .btn-nav:hover{
+    background-color: #fff;
+}
+
+.btn-nav-box .btn-nav.ativo{
+    background-color: #fff;
+}
+
+@keyframes animou{
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+h1, .info h2{
+    transform: translateY(60px);
+    opacity: 0;
+    animation: animou 0.5s ease-in-out .7s forwards;
+}
+
+p{
+    transform: translateY(60px);
+    opacity: 0;
+    animation: animou 0.5s ease-in-out .9s forwards;
+}
+
+.slider-conteiner .slider-box.ativo{
+    opacity: 1;
+    z-index: 1111;
+    pointer-events: auto;
+}
